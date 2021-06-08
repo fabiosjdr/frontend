@@ -1,0 +1,14 @@
+@media only screen and (max-width: 600px) {
+
+    .area-menu-lateral {
+      display: none;
+    }
+
+    .overflow{
+        overflow: auto;
+    }
+
+   .area-shrink{
+       display: none;
+   }
+}

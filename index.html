@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Desafio Accenture</title>
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/mobile.css">
+    <link rel="stylesheet" href="css/open-iconic-master/font/css/open-iconic-bootstrap.css"  media="all" >
+
+    
+    <script src="https://unpkg.com/vue@next" ></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <script src="js/app.js" defer></script>
+    <script src="js/functions.js" defer></script>
+
+</head>
+<body>
+
+    <div id="app" >
+
+       
+        <nav id="headerNav" class="navbar " role="navigation" aria-label="main navigation">
+            <div class="navbar-brand">
+                <a class="navbar-item" href="https://bulma.io">
+                    <img src="https://bulma.io/images/bulma-logo.png" alt="Bulma: Free, open source, and modern CSS framework based on Flexbox" width="112" height="28">
+                </a>
+            
+                <a role="button" id="menuMobile" class="navbar-burger" aria-label="menu" aria-expanded="false">
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                </a>
+            </div>
+        </nav>
+       
+        <div class="columns ">
+                    
+          
+            <div class="column is-narrow area-menu-lateral"> 
+                <section class="section">
+                    
+                    <aside class="menu">
+                        <p class="menu-label  is-info menu-text">
+                            Geral
+                        </p>
+                      
+                        <ul class="menu-list">
+                            <li><a title="Dashboard"> <span class="oi oi-dashboard" ></span> <span class='menu-text' > Dashboard </span></a></li>
+                            <li><a title="Clientes"> <span class="oi oi-person" ></span> <span class='menu-text' > Clientes</span>  </a></li>
+                        </ul>
+                        <p class="menu-label menu-text">
+                            Administração
+                        </p>
+                        <ul class="menu-list">
+                            <li><a> <span class="oi oi-people" title="Equipe"></span>  <span class='menu-text' > Equipe</span></a></li>
+                            <li>
+                            <a ><span class="oi oi-signpost" title="Gerenciar sua equipe"></span> <span class='menu-text'>Gerenciar sua equipe </span> </a>
+                            <ul>
+                                <li><a> <span class="oi oi-star"></span> <span class='menu-text'> Membros</span></a></li>
+                                <li><a>  <span class="oi oi-plus"></span> <span class='menu-text'> Adicionar membros</span></a></li>
+                            </ul>
+                            </li>
+                            <li><a> <span class="oi oi-location"></span> <span class='menu-text'> Convidar</span></a></li>
+                            <li><a> <span class="oi oi-circle-check"></span> <span class='menu-text'> Autenticar</span></a></li>
+                        </ul>
+                        <p class="menu-label menu-text">
+                            Transações
+                        </p>
+                        <ul class="menu-list">
+                            <li><a> <span class="oi oi-dollar"></span> <span class='menu-text'> Pagamentos</span></a></li>
+                            <li><a> <span class="oi oi-loop-circular"></span> <span class='menu-text'> Transferências</span></a></li>
+                            <li><a> <span class="oi oi-pie-chart"></span> <span class='menu-text'> Balanço</span></a></li>
+                        </ul>
+
+                        <div class="area-shrink">
+
+                            <button class="button shrink"> <span class="oi oi-caret-left"></span></button>
+                           
+                        </div>
+                    </aside>
+                    
+                </section>
+            </div>
+            
+            <div class="column  bg-gray">
+
+                <section class="section">
+        
+                    
+            
+                        <section class=" box" ref="teste">                        
+                            <canvas id="myChart" width="860" height="500" ref="myChart"></canvas>         
+                        </section>
+
+                        <section class="  overflow">
+                          
+                            <div class="container">
+                                <table class="table  is-fullwidth">
+                                    <thead>
+                                    <tr>
+                                        <th>Data</th>
+                                        <th>Demanda</th>
+                                        <th>Capacidade</th>                                   
+                                        <th>Atendimento Planejado</th>
+                                        <th>Atendimento Realizado</th>
+                                        <th>Desvio</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr v-for="dado in dados">
+                                            <td>{{ dado.Data }}</td>
+                                            <td>{{ dado.Demanda }}</td>
+                                            <td>{{ dado.Capacidade }}</td>
+                                            <td>{{ dado.AtPlanejado }}</td>
+                                            <td>{{ dado.AtRealizado }}</td>                                           
+                                            <td>{{ dado.Desvio }}</td>                                           
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                                <nav class="pagination is-centered" role="navigation" aria-label="pagination">
+                                    <a class="pagination-previous">Anterior</a>
+                                    <a class="pagination-next">Próximo</a>
+                                    <ul class="pagination-list">
+                                      <li><a class="pagination-link" aria-label="Goto page 1">1</a></li>
+                                      <li><span class="pagination-ellipsis">&hellip;</span></li>
+                                      <li><a class="pagination-link" aria-label="Goto page 45">45</a></li>
+                                      <li><a class="pagination-link is-current" aria-label="Page 46" aria-current="page">46</a></li>
+                                      <li><a class="pagination-link" aria-label="Goto page 47">47</a></li>
+                                      <li><span class="pagination-ellipsis">&hellip;</span></li>
+                                      <li><a class="pagination-link" aria-label="Goto page 86">86</a></li>
+                                    </ul>
+                                </nav>
+
+                            </div> 
+                        </section>
+                    
+                   
+                    
+                </section>
+                
+
+            </div>                
+        </div>
+
+    </div>
+    
+</body>
+</html>
+
+
+<script>
+    
+    $(document).ready(function(){
+      
+        //Desafio.methods.initGrafico();
+        //var ctx = document.getElementById('myChart').getContext('2d');
+        //var myChart = new Chart(ctx, config);
+    });
+  
+    
+</script>
