@@ -32,7 +32,7 @@ const Desafio = {
             var data = {
                 labels: eixoX,
                 datasets: [{
-                    label: '# diferença capacidade / atendimentos',
+                    label: '# diferença',
                     data: eixoY,
                     backgroundColor: cores                 
                 }]
@@ -42,7 +42,15 @@ const Desafio = {
                 type: 'bar',
                 data,
                 options: {
-                    
+                    plugins: {
+                        legend: {
+                          position: 'top',
+                        },
+                        title: {
+                          display: true,
+                          text: 'Capacidade / Atendimentos'
+                        }
+                    },
                     scales: {
                         y: {
                             beginAtZero: true
