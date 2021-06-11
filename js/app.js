@@ -82,10 +82,10 @@ const Desafio = {
                 info['Capacidade'] = 100 + Math.floor(Math.random() * 100);
                 info['AtPlanejado'] = Math.floor(Math.random() * 100);
                 info['AtRealizado'] = Math.floor(Math.random() * 100);
-                info['Desvio'] = Math.floor(Math.random() * 100);
+                info['Desvio'] = info['Capacidade'] - info['AtRealizado'];
 
                 //alimento o grafico
-                eixoY = (info['Capacidade'] - info['AtPlanejado'] );
+                eixoY = (info['Capacidade'] - info['AtRealizado'] );
                 cores = (eixoY > 0) ? 'rgba(2, 222, 153, 0.5)' : 'rgba(222, 2, 2, 0.5)' ;
                 this.eixoX.push(data);
                 this.eixoY.push( eixoY );
